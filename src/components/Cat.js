@@ -1,11 +1,11 @@
 import React from "react";
 
-const Cat = ( { cat, addToBasket }) => {
+const Cat = ( { cat, addToBasket, index }) => {
     return (
-        <div>
+        <div className="cat-card">
             <p>{cat.id}</p>
             <img src={cat.url}></img>
-            <button onClick={addToBasket}>Add to basket</button>
+            <button onClick={() => addToBasket(index)}>Add to basket</button>
         </div>
     )
 }
