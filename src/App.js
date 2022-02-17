@@ -1,8 +1,9 @@
+//@ts-check
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import CatList from './components/CatList';
 import Navbar from './components/Navbar';
-// import Basket from './components/Basket';
+import Basket from './components/Basket';
 
 const App = () => {
   const [basket, setBasket] = useState([]);
