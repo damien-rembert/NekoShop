@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import CatList from './components/CatList';
 import Navbar from './components/Navbar';
-import Basket from './components/Basket';
+// import Basket from './components/Basket';
 
 const App = () => {
   const [basket, setBasket] = useState([]);
@@ -48,9 +48,13 @@ const App = () => {
     return <h1>loading cats.....</h1>
   }
 
-  const addToBasket = (cat) => {
-    console.log(cat)
-    // setBasket([...basket, index]);
+  const addToBasket = (index) => {
+    console.log(cats)
+    let newBasketItems = [...basket];
+    newBasketItems.push(cats[index])
+    setBasket(newBasketItems)
+    console.log(basket)
+    //setBasket([...basket, index]);
   };
 
   // addToBasketClicked(event){
@@ -75,12 +79,20 @@ const App = () => {
       <div>
           <Navbar />
           <h1>Neko Shop</h1>
-          <Basket />
+          {/* <Basket /> */}
           <img src='' className='Basket' />
           <CatList cats={cats} addToBasket={addToBasket} />
+          {/* <Basket basket={basket} /> */}
 
       </div>
     );
     }
 
+  //   const Basket = ({basket}) => {
+  //     return (
+  //       <div>
+  //         {basket[0]}
+  //       </div>
+  //     )
+  // }
 export default App
