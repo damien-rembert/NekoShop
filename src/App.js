@@ -42,6 +42,10 @@ const App = () => {
     console.log("nooooooo!!")
   }, [])
 
+  const addToBasket = (index) => {
+    console.log('added to basket', index);
+  }
+
   if (error.error){
     return <h1>you messed up stop touching things: {error.message} </h1>
   }
@@ -56,11 +60,29 @@ const App = () => {
     return (
       <div>
           <h1>Neko Shop</h1>
-          <img src='' alt='' className='Basket' />
           <Basket />
-          <CatList cats={cats} />
+          <img src='' className='Basket' />
+          <CatList cats={cats} addToBasket={addToBasket} />
+
       </div>
     );
+
+  
+    addToBasketClicked(event){
+      let button = event.target
+      let shopItem = button.parentElement.parentElement
+      let catImage = shopItem.getElementByClassName("basket")[0].src
+      let price = shopItem.getElementByClassName("")[0].innerText
+      addToBasket(catImage, price)
+    }
+  
+    addToBasket(catImage, price){
+      let basketRow = document.createElement("div")
+      basketRow.classList.add("")
+      let basketItems = document.getElementsByClassName("")[0]
+      let basketRowContent = 
+      basketRow.innerHTML =basketRowContent
+      basketItems.append(basketRow
 }
 
 export default App;
