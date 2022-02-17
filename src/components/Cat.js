@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cat = ({cat, addToBasket, index}) => {
+const Cat = (cat, addToBasket, index) => {
 
     return (
         <div className="cat-card">

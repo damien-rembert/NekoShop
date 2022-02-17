@@ -1,9 +1,10 @@
-//@ts-check
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import CatList from './components/CatList';
 import Navbar from './components/Navbar';
 import Basket from './components/Basket';
+import Faker from 'faker';
+
 
 const App = () => {
   const [basket, setBasket] = useState([]);
@@ -12,6 +13,11 @@ const App = () => {
     error: false,
     message: ''
   });
+
+  
+
+
+
 
   const collectCats = async () => {
     try {
@@ -24,9 +30,9 @@ const App = () => {
     }
 
     const data = await response.json()
-    console.log(data)
+    console.log("data in app: " + data);
     setCats(data)
-    console.log(cats)
+    console.log("cats in app: " + cats);
     }
 
     catch(error){
@@ -39,7 +45,7 @@ const App = () => {
 
   useEffect(() => {
     collectCats();
-    console.log("nooooooo!!")
+    console.log("this is after collectCats in useEffect")
   }, [])
 
   if (error.error){
@@ -57,6 +63,67 @@ const App = () => {
     console.log(basket)
     //setBasket([...basket, index]);
   };
+
+  // I'M JUST A BACKUP DELETE ME
+  const addPriceAndName = (aCat) => {
+
+    let randomPrice = () => {
+      let maxPounds = 500;
+      let maxPennies = 99;
+      let price = "";
+
+      let randomNumber = Math.floor((Math.random() * maxPounds));
+      price = price + (randomNumber.toString());
+      randomNumber = Math.floor((Math.random() * maxPennies));
+      price = price + "." + (randomNumber.toString());
+      // console.log("price is " + price);
+      return price;
+    }
+    aCat.id = Faker.name.findName();
+    aCat.price = randomPrice();
+    console.log(aCat.id + " costs " + aCat.price + " url is " + aCat.url);
+  };
+
+  console.log("cats: " + cats);
+  let tempArray = [...cats];
+  console.log("temparray getting cat data: " + tempArray);
+
+  tempArray = tempArray.map((item) => {return addPriceAndName(item)});
+  console.log("cats: " + cats);
+  console.log("temparray: " + tempArray);
+  setCats(tempArray);
+  console.log("cats: " + cats);
+
+
+
+
+  //   let randomPrice = () => {
+  //     let maxPounds = 500;
+  //     let maxPennies = 99;
+  //     let price = "";
+
+  //     let randomNumber = Math.floor((Math.random() * maxPounds));
+  //     price = price + (randomNumber.toString());
+  //     randomNumber = Math.floor((Math.random() * maxPennies));
+  //     price = price + "." + (randomNumber.toString());
+  //     // console.log("price is " + price);
+  //     return price;
+  //   }
+  //   aCat.id = Faker.name.findName();
+  //   aCat.price = randomPrice();
+  //   console.log(aCat.id + " costs " + aCat.price + " url is " + aCat.url);
+  // };
+
+  // console.log("cats: " + cats);
+  // let tempArray = cats.map((item) => {return addPriceAndName(item)});
+  // console.log("cats: " + cats);
+  // console.log("temparray: " + tempArray);
+  // setCats(tempArray);
+  // console.log("cats: " + cats);
+
+  
+
+
 
   // addToBasketClicked(event){
   //   let button = event.target
@@ -89,11 +156,4 @@ const App = () => {
     );
     }
 
-  //   const Basket = ({basket}) => {
-  //     return (
-  //       <div>
-  //         {basket[0]}
-  //       </div>
-  //     )
-  // }
 export default App
