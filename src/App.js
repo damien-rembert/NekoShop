@@ -41,6 +41,10 @@ const App = () => {
     console.log("nooooooo!!")
   }, [])
 
+  const addToBasket = (index) => {
+    console.log('added to basket', index);
+  }
+
   if (error.error){
     return <h1>you messed up stop touching things: {error.message} </h1>
   }
@@ -52,7 +56,7 @@ const App = () => {
       <div>
           <h1>Neko Shop</h1>
           <img src='' className='Basket' />
-          <CatList cats={cats} />
+          <CatList cats={cats} addToBasket={addToBasket} />
       </div>
     );
 
