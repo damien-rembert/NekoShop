@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import CatList from './components/CatList';
+import Basket from './components/Basket';
 
 const App = () => {
-  const [ basket, setBasket] = useState();
-  const [ cats, setCats] = useState("");
+  const [basket, setBasket] = useState();
+  const [cats, setCats] = useState();
   const [error, setError] = useState({
     error: false,
     message: ''
@@ -16,18 +17,18 @@ const App = () => {
       console.log(response)
 
     if (response.status !== 200) {
-      throw new Error ( "google dinousr game here")
+      throw new Error ("Google Dinosaur Game Here")
 
     }
 
     const data = await response.json()
     console.log(data)
-    setCats (data)
+    setCats(data)
     console.log(cats)
     }
 
-    catch (error){
-      setError ({ error: true, message: error.message});
+    catch(error){
+      setError({error: true, message: error.message});
       console.log(error)
     }
      
@@ -52,11 +53,17 @@ const App = () => {
     return <h1>loading cats.....</h1>
   }
 
+  const addHandler  = (cats) => {
+    setBasket([...basket, cats]);
+  };
+
     return (
       <div>
           <h1>Neko Shop</h1>
+          <Basket />
           <img src='' className='Basket' />
           <CatList cats={cats} addToBasket={addToBasket} />
+
       </div>
     );
 
