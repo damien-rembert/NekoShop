@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import CatList from './components/CatList';
+import Navbar from './components/Navbar';
 import Basket from './components/Basket';
 
 const App = () => {
@@ -58,7 +59,9 @@ const App = () => {
   };
 
     return (
+     
       <div>
+          <Navbar />
           <h1>Neko Shop</h1>
           <Basket />
           <img src='' className='Basket' />
@@ -84,5 +87,12 @@ const App = () => {
       basketRow.innerHTML =basketRowContent
       basketItems.append(basketRow
 }
+
+
+
+
+ 
+
+
 
 export default App;
