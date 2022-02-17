@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import CatList from './components/CatList';
 
 const App = () => {
   const [ basket, setBasket] = useState();
@@ -11,7 +12,7 @@ const App = () => {
 
   const collectCats = async () => {
     try {
-      const response = await fetch ("https://api.thecatapi.com/v1/images/search")
+      const response = await fetch ("https://api.thecatapi.com/v1/images/search?limit=10")
       console.log(response)
 
     if (response.status !== 200) {
@@ -50,7 +51,8 @@ const App = () => {
     return (
       <div>
           <h1>Neko Shop</h1>
-          < img src='' className='Basket' />
+          <img src='' className='Basket' />
+          <CatList cats={cats} />
       </div>
     );
 }

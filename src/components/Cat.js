@@ -1,8 +1,10 @@
 const Cat = ( { cat }) => {
     return (
         <div>
-
-            <img src > </img>
+            <p>{cat.id}</p>
+            <img src={cat.url}></img>
         </div>
     )
 }
+
+export default Cat;
