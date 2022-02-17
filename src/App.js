@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Basket from './components/Basket';
 
 const App = () => {
-  const [basket, setBasket] = useState();
+  const [basket, setBasket] = useState([]);
   const [cats, setCats] = useState();
   const [error, setError] = useState({
     error: false,
@@ -32,8 +32,6 @@ const App = () => {
       setError({error: true, message: error.message});
       console.log(error)
     }
-     
-
   }
 
   // this is where the pictures come from bellow //
@@ -43,10 +41,6 @@ const App = () => {
     console.log("nooooooo!!")
   }, [])
 
-  const addToBasket = (index) => {
-    console.log('added to basket', index);
-  }
-
   if (error.error){
     return <h1>you messed up stop touching things: {error.message} </h1>
   }
@@ -54,9 +48,27 @@ const App = () => {
     return <h1>loading cats.....</h1>
   }
 
-  const addHandler  = (cats) => {
-    setBasket([...basket, cats]);
+  const addToBasket = (cat) => {
+    console.log(cat)
+    // setBasket([...basket, index]);
   };
+
+  // addToBasketClicked(event){
+  //   let button = event.target
+  //   let shopItem = button.parentElement.parentElement
+  //   let catImage = shopItem.getElementByClassName("basket")[0]
+  //   let price = shopItem.getElementByClassName("")[0].innerText
+  //   addToBasket(catImage, price)
+  // }
+
+  // addToBasket(catImage, price){
+  //   let basketRow = document.createElement("div")
+  //   basketRow.classList.add("")
+  //   let basketItems = document.getElementsByClassName("")[0]
+  //   let basketRowContent = 
+  //   basketRow.innerHTML =basketRowContent
+  //   basketItems.append(basketRow)
+  // }
 
     return (
      
@@ -69,30 +81,6 @@ const App = () => {
 
       </div>
     );
-
-  
-    addToBasketClicked(event){
-      let button = event.target
-      let shopItem = button.parentElement.parentElement
-      let catImage = shopItem.getElementByClassName("basket")[0].src
-      let price = shopItem.getElementByClassName("")[0].innerText
-      addToBasket(catImage, price)
     }
-  
-    addToBasket(catImage, price){
-      let basketRow = document.createElement("div")
-      basketRow.classList.add("")
-      let basketItems = document.getElementsByClassName("")[0]
-      let basketRowContent = 
-      basketRow.innerHTML =basketRowContent
-      basketItems.append(basketRow
-}
 
-
-
-
- 
-
-
-
-export default App;
+export default App
