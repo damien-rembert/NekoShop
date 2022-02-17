@@ -3,3 +3,43 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+
+.cat-list {
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+.cat-card {
+  width: 20%;
+  margin: 20px;
+  border: 1px solid gray;
+}
+
+.cat-card img {
+  max-width: 100%;
+  height: auto;
+  width: 380px;
+  height: 300px;
+}
+
+.cat-card button {
+  background-color: darkslateblue;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+}
+
+@media all and (max-width: 1200px) {
+  .cat-card {
+    width: 40%;
+  }
+}
+
+@media all and (max-width: 700px) {
+  .cat-card {
+    width: 100%;
+  }
+}
