@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import CatList from './components/CatList';
+import Navbar from './components/Navbar';
 
 const App = () => {
-  const [ basket, setBasket] = useState();
+  // const [ basket, setBasket] = useState();
   const [ cats, setCats] = useState("");
   const [error, setError] = useState({
     error: false,
@@ -49,12 +50,21 @@ const App = () => {
   }
 
     return (
+     
       <div>
+          <Navbar/>
           <h1>Neko Shop</h1>
           <img src='' className='Basket' />
           <CatList cats={cats} />
       </div>
     );
 }
+
+
+
+
+ 
+
+
 
 export default App;
