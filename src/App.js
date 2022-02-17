@@ -55,6 +55,23 @@ const App = () => {
           <CatList cats={cats} />
       </div>
     );
+
+  
+    addToBasketClicked(event){
+      let button = event.target
+      let shopItem = button.parentElement.parentElement
+      let catImage = shopItem.getElementByClassName("basket")[0].src
+      let price = shopItem.getElementByClassName("")[0].innerText
+      addToBasket(catImage, price)
+    }
+  
+    addToBasket(catImage, price){
+      let basketRow = document.createElement("div")
+      basketRow.classList.add("")
+      let basketItems = document.getElementsByClassName("")[0]
+      let basketRowContent = 
+      basketRow.innerHTML =basketRowContent
+      basketItems.append(basketRow
 }
 
 export default App;
