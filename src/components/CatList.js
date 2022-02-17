@@ -2,22 +2,14 @@ import React from 'react';
 import Cat from './Cat';
 import Faker from 'faker';
 
-const CatList = ({cats}) => {
-
-    // let randomName = faker.name.findName();
+const CatList = ({cats, addToBasket}) => {
     cats.map( (cat) => {
         cat.id = Faker.name.findName().toString();
-        // console.log(cat.name);
-
     });
-    // console.log(cats);
-
-    
-
 return (
-    <div>
+    <div className='cat-list'>
         {cats.map((cat, index) => {
-            return <Cat key={index} cat={ cat } /> 
+            return <Cat key={index} cat={cat} addToBasket={addToBasket} /> 
         })}   
     </div>
 )
