@@ -29,10 +29,12 @@ return (
     <div className='cat-list'>
         {cats.map((cat, index) => {
             return (
-                <div key={index}>
+                <div className="cat-card" key={index}>
+                    <img src={cat.url}></img>
                     <p>{cat.id}</p>
-            <img src={cat.url}></img>
-            <button onClick={() => addToBasket(index)}>Add to basket</button></div>
+                    <p>{cat.price}</p>
+                    <button onClick={() => addToBasket(index)}>Add to basket</button>
+                </div>
             )
         })}
             

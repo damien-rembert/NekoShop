@@ -53,7 +53,7 @@ const App = () => {
     let newBasketItems = [...basket];
     newBasketItems.push(cats[index])
     setBasket(newBasketItems)
-    console.log(basket)
+    console.log('this is my backet', basket)
     //setBasket([...basket, index]);
   };
 
@@ -75,17 +75,16 @@ const App = () => {
   // }
 
     return (
-     
-      <div>
-          <Navbar />
-          <h1>Neko Shop</h1>
-          {/* <Basket /> */}
-          <img src='' className='Basket' />
-          <CatList cats={cats} addToBasket={addToBasket} />
-          {/* <Basket basket={basket} /> */}
-
-      </div>
-    );
+        <div>
+            <Navbar />
+            <h1>Welcome to Neko Shop</h1>
+            <h4>Why would you adopt from a shelter , when you can buy from us??</h4>
+            {/* <Basket /> */}
+            <img src='' className='Basket' />
+            <CatList cats={cats} addToBasket={addToBasket} />
+            {/* <Basket basket={basket} /> */}
+        </div>
+      );
     }
 
   //   const Basket = ({basket}) => {
