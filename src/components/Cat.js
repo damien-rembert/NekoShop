@@ -1,6 +1,6 @@
 import React from "react";
 
-const Cat = ( { cat }) => {
+const Cat = ({cat}) => {
     return (
         <div>
             <p>{cat.id}</p>
