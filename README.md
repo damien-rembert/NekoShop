@@ -10,6 +10,6 @@ It was built by:
 
 [Yusuf Ayyub](https://github.com/chromey85),
 
-[Damien Rembert](https://github.com/damien-rembert/)
+[Damien Rembert](https://github.com/damien-rembert/).
 
 This was done as part of the Code Nation Master Course.
