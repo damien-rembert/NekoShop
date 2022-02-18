@@ -1,26 +1,29 @@
-// import {React, useState} from "react";
-
-// const Basket = (props) => {
-//     const 
-// }
+import React from "react";
 
 
 
 
 
 
-// const Basket = ({cats, item, index}) => {
-//     const [basket, setBasket] = useState({
-//         id: null,
-//         value: ''
-//     });
+
+const Basket = ({cats, item, index}) => {
 
 
-//     const handlerRemoveCat = () => {
-//         setBasket([...basket, cats] -1);
-//     }
 
-//     return 
+    return (
+        <div>
+            <p>hello this is the basket</p>
+        </div>
+    )
+}
+    
+
+
+    // const handlerRemoveCat = () => {
+    //     setBasket([...basket, cats] -1);
+    // }
+
+//     return (    
 //     basket.map((item, index))(
 //     <div>
 //         <h2>Cats in your basket</h2>
@@ -33,7 +36,17 @@
 //             {basket.length === 0 && <div>No kitties in your basket</div>}
 //         </div>
 //     </div>
-//     )
+//     ))
 // }
 
-// export default Basket
+  //   const Basket = ({basket}) => {
+  //     return (
+  //       <div>
+  //         {basket[0]}
+  //       </div>
+  //     )
+  // }
+
+
+
+export default Basket
