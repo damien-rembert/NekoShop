@@ -70,7 +70,7 @@ const App = () => {
     basket.forEach((cat) => {
       sum += parseFloat(cat.price);
     })
-    alert(sum);
+    // alert(sum);
     console.log(sum);
     return sum;
 
