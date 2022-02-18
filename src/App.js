@@ -73,9 +73,9 @@ const App = () => {
     // alert(sum);
     console.log(sum);
     return sum;
-
-
   }
+
+  let currentSum = sumOfBasket();
 
 
   const addPriceAndName = (item) => {
@@ -124,7 +124,7 @@ const App = () => {
             <Navbar toggleBasket={toggleShowBasket} />
             <h1>Welcome to Neko Shop</h1>
             <h4>Why would you adopt from a shelter , when you can buy from us??</h4>
-            {showBasket && <Basket basket={basket} setBasket={setBasket} sumOfBasket={sumOfBasket}/>}
+            {showBasket && <Basket basket={basket} setBasket={setBasket} sumOfBasket={currentSum}/>}
             <img src='' className='Basket' />
             <CatList cats={cats} addToBasket={addToBasket} />
             {/* <Basket basket={basket} /> */}
