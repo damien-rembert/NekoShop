@@ -22,7 +22,7 @@ const App = () => {
   const collectCats = async () => {
     try {
       const response = await fetch ("https://api.thecatapi.com/v1/images/search?limit=10")
-      console.log(response)
+      // console.log(response)
 
     if (response.status !== 200) {
       throw new Error ("Google Dinosaur Game Here")
@@ -30,9 +30,9 @@ const App = () => {
     }
 
     const data = await response.json()
-    console.log("data in app: " + data);
+    // console.log("collected data in app: " + data);
     setCats(data)
-    console.log("cats in app: " + cats);
+    // console.log("collected cats in app: " + cats);
     }
 
     catch(error){
@@ -45,7 +45,7 @@ const App = () => {
 
   useEffect(() => {
     collectCats();
-    console.log("this is after collectCats in useEffect")
+    console.log("this is after collectCats in useEffect.")
   }, [])
 
   if (error.error){
@@ -56,17 +56,30 @@ const App = () => {
   }
 
   const addToBasket = (index) => {
-    console.log(cats)
+    console.log(index)
     let newBasketItems = [...basket];
     newBasketItems.push(cats[index])
     setBasket(newBasketItems)
-    console.log(basket)
+    console.log("cats in the basket " + basket.length)
     //setBasket([...basket, index]);
+    sumOfBasket();
   };
 
-  // I'M JUST A BACKUP DELETE ME
-  const addPriceAndName = (aCat) => {
+  const sumOfBasket = () => {
+    let sum = 0;
+    basket.forEach((cat) => {
+      sum += parseFloat(cat.price);
+    })
+    alert(sum);
+    console.log(sum);
+    return sum;
 
+
+  }
+
+
+  const addPriceAndName = (item) => {
+    // console.log("item passed to addPriceAndName: " + item.id );
     let randomPrice = () => {
       let maxPounds = 500;
       let maxPennies = 99;
@@ -79,68 +92,29 @@ const App = () => {
       // console.log("price is " + price);
       return price;
     }
-    aCat.id = Faker.name.findName();
-    aCat.price = randomPrice();
-    console.log(aCat.id + " costs " + aCat.price + " url is " + aCat.url);
+    item.name = Faker.name.findName();
+    item.price = randomPrice();
+    // let newItem = {price: [randomPrice()], name: [Faker.name.findName()], url: [item.url]}
+    // return newItem;
+    // console.log(newItem.name + " costs " + newItem.price + " url is " + newItem.url);
   };
 
-  console.log("cats: " + cats);
-  let tempArray = [...cats];
-  console.log("temparray getting cat data: " + tempArray);
-
-  tempArray = tempArray.map((item) => {return addPriceAndName(item)});
-  console.log("cats: " + cats);
-  console.log("temparray: " + tempArray);
-  setCats(tempArray);
-  console.log("cats: " + cats);
-
-
-
-
-  //   let randomPrice = () => {
-  //     let maxPounds = 500;
-  //     let maxPennies = 99;
-  //     let price = "";
-
-  //     let randomNumber = Math.floor((Math.random() * maxPounds));
-  //     price = price + (randomNumber.toString());
-  //     randomNumber = Math.floor((Math.random() * maxPennies));
-  //     price = price + "." + (randomNumber.toString());
-  //     // console.log("price is " + price);
-  //     return price;
-  //   }
-  //   aCat.id = Faker.name.findName();
-  //   aCat.price = randomPrice();
-  //   console.log(aCat.id + " costs " + aCat.price + " url is " + aCat.url);
-  // };
-
   // console.log("cats: " + cats);
-  // let tempArray = cats.map((item) => {return addPriceAndName(item)});
-  // console.log("cats: " + cats);
-  // console.log("temparray: " + tempArray);
-  // setCats(tempArray);
-  // console.log("cats: " + cats);
+  if (cats.length > 0) {
+    let lastItem = cats.length - 1;
+    if  (!cats[lastItem].price) {
+      let tempArray = [...cats];
+      tempArray.forEach((item) => {return addPriceAndName(item)});
+      // console.log("temparray: " + tempArray);
+      setCats(tempArray);
+      // console.log("cats: " + cats);
+    }
+  }
 
   
 
 
 
-  // addToBasketClicked(event){
-  //   let button = event.target
-  //   let shopItem = button.parentElement.parentElement
-  //   let catImage = shopItem.getElementByClassName("basket")[0]
-  //   let price = shopItem.getElementByClassName("")[0].innerText
-  //   addToBasket(catImage, price)
-  // }
-
-  // addToBasket(catImage, price){
-  //   let basketRow = document.createElement("div")
-  //   basketRow.classList.add("")
-  //   let basketItems = document.getElementsByClassName("")[0]
-  //   let basketRowContent = 
-  //   basketRow.innerHTML =basketRowContent
-  //   basketItems.append(basketRow)
-  // }
 
     return (
      
