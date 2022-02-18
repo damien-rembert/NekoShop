@@ -1,18 +1,17 @@
 import React from "react";
 
-
-
-
-
-
-
-const Basket = ({cats, item, index}) => {
-
-
-
+const Basket = ({basket, setBasket, sumOfBasket}) => { 
+ 
     return (
-        <div>
-            <p>hello this is the basket</p>
+        <div className="basket">
+            {basket.map((basketItem, index) => {
+                return (
+                    <div>
+                        <p key={index}>{basketItem.name} - £{basketItem.price}</p>
+                    </div>
+                )
+            })}
+            {basket.length === 0 ? <div>No kitties in your basket</div> : <div>Total: £{sumOfBasket}</div>}
         </div>
     )
 }

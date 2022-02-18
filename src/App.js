@@ -7,6 +7,7 @@ import Faker from 'faker';
 
 
 const App = () => {
+  const [showBasket, setShowBasket] = useState(false);
   const [basket, setBasket] = useState([]);
   const [cats, setCats] = useState();
   const [error, setError] = useState({
@@ -14,12 +15,7 @@ const App = () => {
     message: ''
   });
 
-  
-
-
-
-
-  const collectCats = async () => {
+    const collectCats = async () => {
     try {
       const response = await fetch ("https://api.thecatapi.com/v1/images/search?limit=10")
       // console.log(response)
@@ -32,6 +28,7 @@ const App = () => {
     const data = await response.json()
     // console.log("collected data in app: " + data);
     setCats(data)
+    // addData[...], setCats(addData)
     // console.log("collected cats in app: " + cats);
     }
 
@@ -62,7 +59,7 @@ const App = () => {
     setBasket(newBasketItems)
 
 
-    console.log('this is my backet', basket)
+    console.log('this is my basket', basket)
 
     //setBasket([...basket, index]);
     sumOfBasket();
@@ -114,17 +111,20 @@ const App = () => {
     }
   }
 
+  const toggleShowBasket = () => {
+    console.log("clicked", showBasket)
+    setShowBasket(!showBasket)
+  }
   
-
 
 
 
     return (
         <div>
-            <Navbar />
+            <Navbar toggleBasket={toggleShowBasket} />
             <h1>Welcome to Neko Shop</h1>
             <h4>Why would you adopt from a shelter , when you can buy from us??</h4>
-            {/* <Basket /> */}
+            {showBasket && <Basket basket={basket} setBasket={setBasket} sumOfBasket={sumOfBasket}/>}
             <img src='' className='Basket' />
             <CatList cats={cats} addToBasket={addToBasket} />
             {/* <Basket basket={basket} /> */}

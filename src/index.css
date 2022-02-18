@@ -8,10 +8,11 @@ body {
 
 #nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background: white;
   padding: 10px;
+
 }
 
 #logo {
@@ -60,6 +61,13 @@ body {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 15px;
+}
+
+.basket {
+  height: 400px;
+  width: 400px;
+  background-color: blueviolet;
 }
 
 @media all and (max-width: 1200px) {
