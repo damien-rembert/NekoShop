@@ -18,7 +18,7 @@ const Cat = ({name, price, url, addToBasket, index}) => {
         <div className="cat-card">
             <p>{name}</p>
             <p>£{price}</p>
-            <img src={url}></img>
+            <img src={url} alt='just another cat' ></img>
             <button onClick={() => addCat(index)}>Add to basket</button>
         </div>
     )

@@ -7,7 +7,7 @@ const Navbar = ({toggleBasket}) =>{
   return (
 
   <div id='nav'>
-        <img id="logo" src={Logo} alt= "logo" />
+        <img id="logo" src={Logo} alt="logo" />
         <img id="cart" src={Cart} alt='shopping basket' onClick={toggleBasket} />
   </div>
   );

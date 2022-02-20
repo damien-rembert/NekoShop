@@ -53,6 +53,18 @@ const App = () => {
     return <h1>loading cats.....</h1>
   }
 
+
+  const sumOfBasket = () => {
+    let sum = 0;
+    basket.forEach((cat) => {
+      sum += parseFloat(cat.price);
+    })
+    // alert(sum);
+    console.log(sum);
+    return sum;
+  }
+
+
   const addToBasket = (index) => {
     console.log(index)
     let newBasketItems = [...basket];
@@ -66,15 +78,6 @@ const App = () => {
     sumOfBasket();
   };
 
-  const sumOfBasket = () => {
-    let sum = 0;
-    basket.forEach((cat) => {
-      sum += parseFloat(cat.price);
-    })
-    // alert(sum);
-    console.log(sum);
-    return sum;
-  }
 
   let currentSum = sumOfBasket();
 
@@ -87,7 +90,7 @@ const App = () => {
       let price = "";
 
       let randomNumber = Math.floor((Math.random() * maxPounds));
-      price = price + (randomNumber.toString());
+      price += (randomNumber.toString());
       randomNumber = Math.floor((Math.random() * maxPennies));
       price = price + "." + (randomNumber.toString());
       // console.log("price is " + price);
@@ -126,7 +129,6 @@ const App = () => {
             <h1>Welcome to Neko Shop</h1>
             <h4>Why would you adopt from a shelter , when you can buy from us??</h4>
             {showBasket && <Basket basket={basket} setBasket={setBasket} sumOfBasket={currentSum}/>}
-            <img src='' className='Basket' />
             <CatList cats={cats} addToBasket={addToBasket} />
             {/* <Basket basket={basket} /> */}
         </div>
