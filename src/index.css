@@ -57,6 +57,10 @@ body {
   border-radius: 0.375rem;
 }
 
+/* div.bottomLine {
+  padding-top: 10px;
+} */
+
 .cat-card button {
   background-color: rgb(88, 80, 139);
   color: white;

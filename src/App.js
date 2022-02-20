@@ -19,7 +19,6 @@ const App = () => {
     const collectCats = async () => {
     try {
       const response = await fetch ("https://api.thecatapi.com/v1/images/search?limit=12&mime_types=jpg,png")
-      // console.log(response)
 
     if (response.status !== 200) {
       throw new Error ("Google Dinosaur Game Here")
@@ -27,10 +26,7 @@ const App = () => {
     }
 
     const data = await response.json()
-    // console.log("collected data in app: " + data);
     setCats(data)
-    // addData[...], setCats(addData)
-    // console.log("collected cats in app: " + cats);
     }
 
     catch(error){
@@ -39,11 +35,9 @@ const App = () => {
     }
   }
 
-  // this is where the pictures come from bellow //
 
   useEffect(() => {
     collectCats();
-    console.log("this is after collectCats in useEffect.")
   }, [])
 
   if (error.error){
@@ -59,8 +53,6 @@ const App = () => {
     basket.forEach((cat) => {
       sum += parseFloat(cat.price);
     })
-    // alert(sum);
-    console.log(sum);
     return sum;
   }
 
@@ -70,11 +62,6 @@ const App = () => {
     let newBasketItems = [...basket];
     newBasketItems.push(cats[index])
     setBasket(newBasketItems)
-
-
-    console.log('this is my basket', basket)
-
-    //setBasket([...basket, index]);
     sumOfBasket();
   };
 
@@ -83,7 +70,6 @@ const App = () => {
 
 
   const addPriceAndName = (item) => {
-    // console.log("item passed to addPriceAndName: " + item.id );
     let randomPrice = () => {
       let maxPounds = 500;
       let maxPennies = 99;
@@ -93,25 +79,18 @@ const App = () => {
       price += (randomNumber.toString());
       randomNumber = Math.floor((Math.random() * maxPennies));
       price = price + "." + (randomNumber.toString());
-      // console.log("price is " + price);
       return price;
     }
     item.name = Faker.name.findName();
     item.price = randomPrice();
-    // let newItem = {price: [randomPrice()], name: [Faker.name.findName()], url: [item.url]}
-    // return newItem;
-    // console.log(newItem.name + " costs " + newItem.price + " url is " + newItem.url);
   };
 
-  // console.log("cats: " + cats);
   if (cats.length > 0) {
     let lastItem = cats.length - 1;
     if  (!cats[lastItem].price) {
       let tempArray = [...cats];
       tempArray.forEach((item) => {return addPriceAndName(item)});
-      // console.log("temparray: " + tempArray);
       setCats(tempArray);
-      // console.log("cats: " + cats);
     }
   }
 
@@ -125,12 +104,11 @@ const App = () => {
 
     return (
         <div>
-            <Navbar toggleBasket={toggleShowBasket} />
+            <Navbar toggleBasket={ toggleShowBasket } sumOfBasket={ currentSum } />
             <h1>Welcome to Neko Shop</h1>
-            <h4>Why would you adopt from a shelter , when you can buy from us??</h4>
-            {showBasket && <Basket basket={basket} setBasket={setBasket} sumOfBasket={currentSum}/>}
+            <h4>Why would you adopt from a shelter, when you can buy from us??</h4>
+            {showBasket && <Basket basket={basket} setBasket={setBasket} sumOfBasket={currentSum}  toggleBasket={ toggleShowBasket }/>}
             <CatList cats={cats} addToBasket={addToBasket} />
-            {/* <Basket basket={basket} /> */}
         </div>
       );
     }
