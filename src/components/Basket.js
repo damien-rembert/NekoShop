@@ -1,6 +1,16 @@
+// @ts-check
 import React from "react";
 
 const Basket = ({basket, setBasket, sumOfBasket}) => { 
+
+
+    const remover = (index) => {
+        let storedBasket = [...basket];
+        storedBasket.splice(index, 1);
+        setBasket(storedBasket);
+    }
+
+
  
     return (
         <div className="basket">
@@ -8,6 +18,8 @@ const Basket = ({basket, setBasket, sumOfBasket}) => {
                 return (
                     <div>
                         <p key={index}>{basketItem.name} - £{basketItem.price}</p>
+                        <label><button className='button' onClick={() => remover(index)}>&#x1F5D1;</button>delete</label>
+
                     </div>
                 )
             })}
