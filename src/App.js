@@ -18,7 +18,7 @@ const App = () => {
 
     const collectCats = async () => {
     try {
-      const response = await fetch ("https://api.thecatapi.com/v1/images/search?limit=12")
+      const response = await fetch ("https://api.thecatapi.com/v1/images/search?limit=12&mime_types=jpg,png")
       // console.log(response)
 
     if (response.status !== 200) {
